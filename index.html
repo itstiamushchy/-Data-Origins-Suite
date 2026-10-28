@@ -8,19 +8,67 @@
 </head>
 <body>
 <div class="main-container">
-    <div class="toolbar">
-        <button id="selectBtn" onclick="document.getElementById('fileInput').click()">Обрати файл</button>
-        <button id="reportBtn" disabled>Звіт</button>
-        <span id="fileNameLabel">файл не обрано</span>
-        <input type="file" id="fileInput" accept="*/*" hidden>
+    <div class="tab-switcher">
+        <button id="tabMetaBtn" class="active">Метадані</button>
+        <button id="tabLogsBtn">Логи</button>
+        <button id="tabAddBtn">Додавання метаданих</button>
     </div>
 
-    <div class="drop-zone" id="dropZone">Перетягніть файл сюди або натисніть «Обрати файл»</div>
+    <section id="viewMeta" class="view active">
+        <div class="toolbar">
+            <button id="selectBtn" onclick="document.getElementById('fileInput').click()">Обрати файл</button>
+            <button id="reportBtn" disabled>Звіт</button>
+            <span id="fileNameLabel">файл не обрано</span>
+            <input type="file" id="fileInput" accept="*/*" hidden>
+        </div>
 
-    <div class="terminal-pane">
-        <div class="terminal-titlebar">ТЕРМІНАЛ</div>
-        <div class="terminal-content" id="terminalContent"></div>
-    </div>
+        <div class="drop-zone" id="dropZone">Перетягніть файл сюди або натисніть «Обрати файл»</div>
+
+        <div class="terminal-pane">
+            <div class="terminal-titlebar">ТЕРМІНАЛ</div>
+            <div class="terminal-content" id="terminalContent"></div>
+        </div>
+    </section>
+
+    <section id="viewLogs" class="view">
+        <div class="toolbar">
+            <button id="selectLogBtn" onclick="document.getElementById('logFileInput').click()">Обрати лог-файл</button>
+            <button id="logReportBtn" disabled>Звіт</button>
+            <span id="logFileNameLabel">файл не обрано</span>
+            <input type="file" id="logFileInput" accept="*/*" hidden>
+        </div>
+
+        <div class="drop-zone" id="logDropZone">Перетягніть лог-файл сюди або натисніть «Обрати лог-файл»</div>
+
+        <div class="log-panes">
+            <div class="terminal-pane" id="logRawPane">
+                <div class="terminal-titlebar">ЛОГ</div>
+                <div class="terminal-content" id="logTerminalContent"></div>
+            </div>
+            <div class="terminal-pane" id="logReportPane">
+                <div class="terminal-titlebar">ЗВІТ</div>
+                <div class="terminal-content" id="logReportContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="viewAdd" class="view">
+        <div class="toolbar">
+            <button id="selectAddBtn" onclick="document.getElementById('addFileInput').click()">Обрати файл</button>
+            <button id="addSubmitBtn" disabled>Додати метадані</button>
+            <span id="addFileNameLabel">файл не обрано</span>
+            <input type="file" id="addFileInput" accept="*/*" hidden>
+        </div>
+
+        <div class="drop-zone" id="addDropZone">Перетягніть файл сюди або натисніть «Обрати файл»</div>
+
+        <textarea id="addCommentInput" class="comment-input" placeholder="Довільний коментар, що буде додано до файлу разом із датою/часом і назвою інструмента…"></textarea>
+
+        <div class="terminal-pane">
+            <div class="terminal-titlebar">ТЕРМІНАЛ</div>
+            <div class="terminal-content" id="addTerminalContent"></div>
+        </div>
+    </section>
 </div>
 
     <footer class="app-footer">
@@ -127,6 +175,38 @@
 <script src="js/parsers/generic.js"></script>
 <script src="js/report.js"></script>
 <script src="js/app.js"></script>
+
+<script src="js/logparsers/weblog.js"></script>
+<script src="js/logparsers/syslog.js"></script>
+<script src="js/logparsers/dblog.js"></script>
+<script src="js/logparsers/jsonlog.js"></script>
+<script src="js/logparsers/winmac-binary.js"></script>
+<script src="js/logparsers/generic-text.js"></script>
+<script src="js/logparsers/iis-firewall.js"></script>
+<script src="js/logparsers/dbserver2.js"></script>
+<script src="js/logparsers/proxylog.js"></script>
+<script src="js/logparsers/k8s.js"></script>
+<script src="js/logparsers/javalog.js"></script>
+<script src="js/logparsers/mail.js"></script>
+<script src="js/logparsers/netdevice.js"></script>
+<script src="js/logparsers/cloudlog.js"></script>
+
+<script src="js/crc32.js"></script>
+<script src="js/zip-writer.js"></script>
+<script src="js/meta-add/common.js"></script>
+<script src="js/meta-add/png.js"></script>
+<script src="js/meta-add/jpeg.js"></script>
+<script src="js/meta-add/gif.js"></script>
+<script src="js/meta-add/webp.js"></script>
+<script src="js/meta-add/svgxml.js"></script>
+<script src="js/meta-add/zipcomment.js"></script>
+<script src="js/meta-add/ooxml.js"></script>
+<script src="js/meta-add/odf.js"></script>
+<script src="js/meta-add/pdf.js"></script>
+<script src="js/meta-add/mp3id3.js"></script>
+<script src="js/meta-add-app.js"></script>
+<script src="js/log-report.js"></script>
+<script src="js/log-app.js"></script>
 
 
 </body>

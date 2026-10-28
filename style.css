@@ -73,6 +73,69 @@ body {
     }
 }
 
+/* --- Перемикач вкладок (Метадані / Логи) --- */
+.tab-switcher {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.tab-switcher button {
+    background: var(--panel-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 7px 16px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tab-switcher button.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+.view {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    gap: 12px;
+}
+
+.view.active { display: flex; }
+
+/* --- Логи: пара терміналів ЛОГ / ЗВІТ з оверлеєм --- */
+.log-panes {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.log-panes .terminal-pane { position: absolute; inset: 0; }
+
+#logReportPane { display: none; }
+#logReportPane.show { display: flex; }
+#logRawPane.hide { display: none; }
+
+.comment-input {
+    width: 100%;
+    min-height: 56px;
+    resize: vertical;
+    background: var(--panel-bg);
+    color: var(--terminal-explain);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 13px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
 .toolbar {
     display: flex;
     align-items: center;
@@ -160,6 +223,12 @@ body {
 .terminal-content::-webkit-scrollbar { width: 10px; }
 .terminal-content::-webkit-scrollbar-track { background: transparent; }
 .terminal-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+
+/* --- Підсвітка рівнів у сирому лозі --- */
+.log-line-error { color: #f87171; }
+.log-line-warn { color: #fbbf24; }
+.log-line-ok { color: var(--terminal-text); }
+.log-line-muted { color: var(--text-muted); }
 
 /* --- Кольоровий звіт --- */
 .report-block { margin-top: 10px; }
